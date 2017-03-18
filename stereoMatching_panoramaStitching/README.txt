@@ -15,7 +15,7 @@ RMS consistency using bilateral:  8.1287588417321
 
 PART II:
 
-Best homography:
+Best homography (differs slightly each run due to usage of RANSAC):
 
 [[  7.31623763e-01  -1.94952364e-02   3.64836057e+02]
  [ -9.33985208e-02   9.43879266e-01   3.69041550e+01]
