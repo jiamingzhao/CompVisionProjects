@@ -1,3 +1,10 @@
+'''
+    Jiaming Zhao
+    February 2017
+    Project 1: Canny Edge Detector and Harris Corner Detector
+    Computer Vision @ University of Virginia
+'''
+
 # -*- coding: utf-8 -*-
 import skimage, skimage.io, pylab, scipy.ndimage.filters
 import numpy as np
