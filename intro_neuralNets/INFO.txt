@@ -1,0 +1,87 @@
+Jiaming Zhao
+
+Computer Vision Project 3:
+Neural Networks - MNIST-MLP, MNIST-CNN, CATS+DOGS
+README
+
+Results:
+
+PART I:
+1: What is the test set accuracy after removing hidden layers so there is only 10 neuron softmax output?
+	The set accuracy is 0.9284
+
+2: What is the confusion matrix after normalization?
+[  0.977551  0.000000  0.002041  0.002041  0.000000  0.006122  0.008163  0.003061  0.001020  0.000000  ]
+[  0.000000  0.980617  0.004405  0.000881  0.000000  0.000881  0.003524  0.001762  0.007930  0.000000  ]
+[  0.004845  0.006783  0.898256  0.016473  0.006783  0.002907  0.013566  0.007752  0.039729  0.002907  ]
+[  0.002970  0.000000  0.018812  0.908911  0.000000  0.025743  0.001980  0.011881  0.023762  0.005941  ]
+[  0.001018  0.001018  0.007128  0.002037  0.923625  0.000000  0.009165  0.007128  0.011202  0.037678  ]
+[  0.011211  0.003363  0.002242  0.036996  0.008969  0.873318  0.015695  0.007848  0.035874  0.004484  ]
+[  0.010438  0.003132  0.006263  0.001044  0.006263  0.010438  0.959290  0.001044  0.002088  0.000000  ]
+[  0.001946  0.006809  0.022374  0.003891  0.006809  0.000000  0.000000  0.930934  0.001946  0.025292  ]
+[  0.007187  0.008214  0.006160  0.017454  0.008214  0.019507  0.011294  0.011294  0.903491  0.007187  ]
+[  0.009911  0.006938  0.000991  0.007929  0.020813  0.005946  0.000000  0.029732  0.008920  0.908821  ]
+
+3: Which digits have the highest and lowest entries along the diagonal?
+	The digits 1 (0.980) and 0 (0.978) are the highest entries
+	The digits 5 (0.873) and 2 (0.898) are the lowest entries but some confusion matrices had 5, 8 or 5, 3 lowest
+
+4: For the worst performing digit, which other digit is it most often confused with?
+	The digit 5 is confused with 3 (0.037) and 8 (0.036) most often
+
+5: What might be the explanation for the digit that performs best and worst?
+	The digits that perform the best are the most distinct and are simple to write as well as easy to discern,
+	whereas the digits that perform the worst are squiggly/complex and similar in shape, especially when written messily
+	angles and shapes could differ if written poorly
+
+6: What is the test accuracy of the network after two hidden fully connected layers with 16 neurons each are added?
+	The set accuracy is 0.95, barely better than without the hidden layers
+
+7: What is the test accuracy of the network after the number of neurons in the hidden layers is increased to 256 each?
+	The set accuracy is 0.98, which is a great deal better than the original
+
+8: What is the new confusion matrix?
+[  0.990816  0.000000  0.002041  0.001020  0.000000  0.000000  0.001020  0.000000  0.004082  0.001020  ]
+[  0.000000  0.994714  0.001762  0.000000  0.000000  0.000000  0.000881  0.000000  0.002643  0.000000  ]
+[  0.001938  0.000000  0.975775  0.002907  0.000969  0.000000  0.001938  0.004845  0.011628  0.000000  ]
+[  0.000000  0.000000  0.001980  0.980198  0.000000  0.005941  0.000000  0.001980  0.005941  0.003960  ]
+[  0.002037  0.000000  0.002037  0.000000  0.980652  0.000000  0.005092  0.001018  0.002037  0.007128  ]
+[  0.002242  0.001121  0.000000  0.003363  0.000000  0.979821  0.005605  0.000000  0.005605  0.002242  ]
+[  0.004175  0.003132  0.000000  0.001044  0.003132  0.004175  0.981211  0.000000  0.003132  0.000000  ]
+[  0.001946  0.002918  0.011673  0.001946  0.001946  0.000000  0.000000  0.953307  0.018482  0.007782  ]
+[  0.004107  0.000000  0.001027  0.002053  0.003080  0.001027  0.000000  0.002053  0.984600  0.002053  ]
+[  0.000000  0.001982  0.000000  0.000991  0.008920  0.003964  0.000991  0.002973  0.010902  0.969276  ]
+
+9: Which of the above three networks performed best at test time, and why?
+	The final network with 256 neurons in the hidden layers performed the best.
+	This network had the most parameters and a more complex/accurate model.
+
+10: If you change the loss from cross entropy to L2 (in Keras this is called 'mean_squared_error'), is the result better or worse?
+	The result is marginally better, with a set accuracy from 0.980 to 0.985
+
+11:  * note: these training times were achieved with a GTX 970 1.253ghz, 4.0GiB GDDR5 *
+	(A) a 3x3 convolution layer with 4 convolutions followed by a softmax
+		Test accuracy: 0.9623
+		Training time: 32.34361410140991
+
+	(B) a 3x3 convolution with 32 convolutions followed by a softmax
+		Test accuracy: 0.981
+		Training time: 49.858829975128174
+	
+	(C) a 3x3 convolution layer with 32 convolutions followed by a 2x2 max pool followed by softmax
+		Test accuracy: 0.979
+		Training time: 40.320618629455566
+
+12: For debugging purposes, you can lower the number of training and validation samples by a factor of say 20, and run for 1 epoch.
+	What accuracy do you obtain, and why?
+	
+	Accuracy of 0.51999 which is barely better than random chance. This is because there are not enough samples to train the
+	model and allow the model to acquire enough weights. Having only 1 epoch makes a bit of a difference as well because
+	the increased number of epochs allows the model to fine-tune the weights
+
+13: If you fine-tune for 1 or 2 epochs using the original number of training and validation samples, what accuracy do you obtain, and why? 
+	Does your saved model file now work better with your testing utility?
+
+	Using 2 epochs, 30,000 nb_train_samples, and 900 nb_validation_samples gives an accuracy of 0.905
+	The extra samples and epochs allows the model to acquire more weights and finer-tuned weights.
+	The saved model now works incredibly well with the testing utility (90.5% accuracy)
